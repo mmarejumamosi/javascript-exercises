@@ -247,8 +247,8 @@ describe("basics", function () {
             // By observing their casting behavior in the tests below, you can find
             // out the required types.
             // ✏️ ADD CODE HERE ✏️
-const firstVariable= 3;
-const secondVariable="1"
+            const firstVariable = 3;
+            const secondVariable = "1"
             ////////////////////////////////////////////////////////////////////
 
             expect(typeof firstVariable).to.equal("number");
@@ -265,7 +265,7 @@ const secondVariable="1"
             ////////////////////////////////////////////////////////////////////
             // Can you find a string that casts to `false` in an if() statement?
             // ✏️ ADD CODE HERE ✏️
-const falsyString =""
+            const falsyString = ""
             ////////////////////////////////////////////////////////////////////
 
             expect(typeof falsyString).to.equal("string");
@@ -282,8 +282,8 @@ const falsyString =""
             ////////////////////////////////////////////////////////////////////
             // Can you find two different numbers that each cast to `false` in an if() statement?
             // ✏️ ADD CODE HERE ✏️
-const falsyNumber1 =0;
-const falsyNumber2 =NaN;
+            const falsyNumber1 = 0;
+            const falsyNumber2 = NaN;
             ////////////////////////////////////////////////////////////////////
 
             expect(typeof falsyNumber1).to.equal("number");
@@ -307,7 +307,7 @@ const falsyNumber2 =NaN;
             ////////////////////////////////////////////////////////////////////
             // Can you find a value that is typeof "object" but also casts to `false`?
             // ✏️ ADD CODE HERE ✏️
-const falsyThing = null;
+            const falsyThing = null;
             ////////////////////////////////////////////////////////////////////
 
             expect(typeof falsyThing).to.equal("object");
@@ -337,7 +337,7 @@ const falsyThing = null;
 
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
-
+            propertyName = "secondProperty";
             ////////////////////////////////////////////////////////////////////
 
             // That's the same property access as above, but now we get back
@@ -352,7 +352,8 @@ const falsyThing = null;
             // You can create objects that reference themselves.
             // But you need two steps to do it.
             // ✏️ ADD CODE HERE ✏️
-
+            const object = {};
+            object.object = object;
             ////////////////////////////////////////////////////////////////////
 
             expect(object.object).to.equal(object);
