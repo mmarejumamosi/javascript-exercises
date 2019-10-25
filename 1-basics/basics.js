@@ -5,34 +5,34 @@
  * - Only add or edit code in areas marked with ✏️
  */
 
-describe("basics", function() {
+describe("basics", function () {
     "use strict";
 
-    describe("Example test", function() {
-        it("should run without errors", function() {
+    describe("Example test", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
-
+const someVariable = true;
             ////////////////////////////////////////////////////////////////////
 
             expect(someVariable).to.equal(true);
         });
     });
 
-    describe("Some variable declarations are hoisted", function() {
-        it("should run without errors", function() {
+    describe("Some variable declarations are hoisted", function () {
+        it("should run without errors", function () {
             expect(someVariable).to.equal(undefined);
 
             ////////////////////////////////////////////////////////////////////
             // Declare "someVariable" in way so that the declaration is hoisted.
             // ✏️ ADD CODE HERE ✏️
-
+            var someVariable = 5;
             ////////////////////////////////////////////////////////////////////
         });
     });
 
-    describe("Other variables declarations are NOT hoisted", function() {
-        it("should run without errors", function() {
+    describe("Other variables declarations are NOT hoisted", function () {
+        it("should run without errors", function () {
             expect(() => {
                 someVariable; // someVariable should NOT yet be defined here
             }).to.throw("Cannot access 'someVariable' before initialization");
@@ -40,18 +40,18 @@ describe("basics", function() {
             ////////////////////////////////////////////////////////////////////
             // Declare "someVariable" in way so that the declaration is NOT hoisted.
             // ✏️ ADD CODE HERE ✏️
-
+let someVariable;
             ////////////////////////////////////////////////////////////////////
 
             expect(someVariable).to.equal(undefined);
         });
     });
 
-    describe("Undefined or null?", function() {
-        it("should run without errors", function() {
+    describe("Undefined or null?", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
-
+const someVariable = undefined;
             ////////////////////////////////////////////////////////////////////
 
             expect(typeof someVariable).to.equal("undefined");
@@ -63,14 +63,14 @@ describe("basics", function() {
         });
     });
 
-    describe("Avoid primitive wrappers", function() {
-        it("should run without errors", function() {
+    describe("Avoid primitive wrappers", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // 🚨 PLEASE NOTE 🚨:
             // new Number() creates a "primitive wrapper". It's not an actual number, it's an object.
             // In 99.999% of all cases, this is a bug and not actually intended. Fix it! :)
             // ✏️ FIX THAT BUG ✏️
-            const someNumber = new Number(3);
+            const someNumber = 3;
             ////////////////////////////////////////////////////////////////////
 
             // The primitive wrapper passes the loose quality check because it will be casted to a number.
@@ -81,8 +81,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Writing big numbers without typing a lot zeros", function() {
-        it("should run without errors", function() {
+    describe("Writing big numbers without typing a lot zeros", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // We're searching for a big number written in way that we don't have to
             // write all the zeros.
@@ -98,8 +98,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Trailing zeros can be omitted", function() {
-        it("should run without errors", function() {
+    describe("Trailing zeros can be omitted", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // We're searching for a floating point number
             // written in way that we don't have to write all the zeros AFTER the point.
@@ -115,8 +115,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Leading zeros can also be omitted", function() {
-        it("should run without errors", function() {
+    describe("Leading zeros can also be omitted", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // We're searching for a floating point number
             // written in way that we don't have to write all the zeros BEFORE the point.
@@ -131,8 +131,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Create an object with a property", function() {
-        it("should run without errors", function() {
+    describe("Create an object with a property", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
 
@@ -143,8 +143,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Set a property to undefined", function() {
-        it("should run without errors", function() {
+    describe("Set a property to undefined", function () {
+        it("should run without errors", function () {
             const object = {
                 someProperty: 1
             };
@@ -162,8 +162,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Delete a property from an object", function() {
-        it("should run without errors", function() {
+    describe("Delete a property from an object", function () {
+        it("should run without errors", function () {
             const object = {
                 someProperty: 1
             };
@@ -181,8 +181,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Create a new reference to the same array", function() {
-        it("should run without errors", function() {
+    describe("Create a new reference to the same array", function () {
+        it("should run without errors", function () {
             const firstArray = [1, 2, 3];
 
             ////////////////////////////////////////////////////////////////////
@@ -202,8 +202,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Create an actual copy of an array", function() {
-        it("should run without errors", function() {
+    describe("Create an actual copy of an array", function () {
+        it("should run without errors", function () {
             const firstArray = [1, 2, 3];
 
             ////////////////////////////////////////////////////////////////////
@@ -225,8 +225,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Create an array with an initial length", function() {
-        it("should run without errors", function() {
+    describe("Create an array with an initial length", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
             // ✏️ ADD CODE HERE ✏️
@@ -240,8 +240,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Weird casting rules", function() {
-        it("should run without errors", function() {
+    describe("Weird casting rules", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // We need two variables with two different types.
             // By observing their casting behavior in the tests below, you can find
@@ -259,8 +259,8 @@ describe("basics", function() {
         });
     });
 
-    describe("A falsy string", function() {
-        it("should run without errors", function() {
+    describe("A falsy string", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // Can you find a string that casts to `false` in an if() statement?
             // ✏️ ADD CODE HERE ✏️
@@ -276,8 +276,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Falsy numbers", function() {
-        it("should run without errors", function() {
+    describe("Falsy numbers", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // Can you find two different numbers that each cast to `false` in an if() statement?
             // ✏️ ADD CODE HERE ✏️
@@ -300,8 +300,8 @@ describe("basics", function() {
         });
     });
 
-    describe("A falsy object?", function() {
-        it("should run without errors", function() {
+    describe("A falsy object?", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // Can you find a value that is typeof "object" but also casts to `false`?
             // ✏️ ADD CODE HERE ✏️
@@ -317,8 +317,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Accessing keys with the bracket notation", function() {
-        it("should run without errors", function() {
+    describe("Accessing keys with the bracket notation", function () {
+        it("should run without errors", function () {
             const object = {
                 firstProperty: 1,
                 secondProperty: 2
@@ -344,8 +344,8 @@ describe("basics", function() {
         });
     });
 
-    describe("Circular reference", function() {
-        it("should run without errors", function() {
+    describe("Circular reference", function () {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // You can create objects that reference themselves.
             // But you need two steps to do it.
