@@ -5,29 +5,29 @@
  * - Only add or edit code in areas marked with ✏️
  */
 
-describe("functions", function() {
+describe("functions", function () {
     "use strict";
 
     describe("Function declaration", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             myFunction(); // myFunction should already be callable here
 
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
-
+            function myFunction() { }
             ////////////////////////////////////////////////////////////////////
         });
     });
 
     describe("Function expression", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             expect(() => {
                 myFunction(); // myFunction should NOT yet be callable here
             }).to.throw("Cannot access 'myFunction' before initialization");
 
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
-
+            const myFunction = () => { };
             ////////////////////////////////////////////////////////////////////
 
             myFunction(); // myFunction should be callable now
@@ -35,12 +35,12 @@ describe("functions", function() {
     });
 
     describe("Function alias", () => {
-        it("should run without errors", function() {
-            function myFunction() {}
+        it("should run without errors", function () {
+            function myFunction() { }
 
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
-
+            const otherFunction = myFunction;
             ////////////////////////////////////////////////////////////////////
 
             if (myFunction !== otherFunction) {
@@ -52,18 +52,18 @@ describe("functions", function() {
     });
 
     describe("Named function expression", () => {
-        it("should run without errors", function() {
-            const otherFunction = function myFunction() {};
+        it("should run without errors", function () {
+            const otherFunction = function myFunction() { };
 
             ////////////////////////////////////////////////////////////////////
             // ✏️ EDIT LINE BELOW ✏️
-            myFunction(); // why is myFunction not callable?
+            otherFunction(); // why is myFunction not callable?
             ////////////////////////////////////////////////////////////////////
         });
     });
 
     describe("Called without explicit context", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             function getContext() {
                 return this; // <--- we just return whatever 'this' is
             }
@@ -72,7 +72,7 @@ describe("functions", function() {
             // Declare a constant 'answer' with the correct result.
             // If you call getContext() here, you're a cheater! :)
             // ✏️ ADD CODE HERE ✏️
-
+            const answer = undefined;
             ////////////////////////////////////////////////////////////////////
 
             const result = getContext(); // <--- called without explicit context
@@ -84,7 +84,7 @@ describe("functions", function() {
     });
 
     describe("Called with explicit context", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             function getContext() {
                 return this;
             }
@@ -96,7 +96,9 @@ describe("functions", function() {
             // and 'answerThirdResult' with the correct results.
             // If you call getContext() here, you're a cheater! :)
             // ✏️ ADD CODE HERE ✏️
-
+            const answerFirstResult = undefined;
+            const answerSecondResult = context;
+            const answerThirdResult = undefined;
             ////////////////////////////////////////////////////////////////////
 
             // First we call the function without an explicit context
@@ -119,9 +121,9 @@ describe("functions", function() {
     });
 
     describe("Called on an object", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             const object = {
-                getContext: function() {
+                getContext: function () {
                     return this;
                 }
             };
@@ -134,7 +136,8 @@ describe("functions", function() {
             // and 'answerSecondResult' with the correct results.
             // If you call getContext() here, you're a cheater! :)
             // ✏️ ADD CODE HERE ✏️
-
+            const answerFirstResult = object;
+            const answerSecondResult = differentObject;
             ////////////////////////////////////////////////////////////////////
 
             // First we call the function on an object
@@ -152,11 +155,11 @@ describe("functions", function() {
     });
 
     describe("Bound function", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             const context = {};
             const differentContext = {};
 
-            let getContext = function() {
+            let getContext = function () {
                 return this;
             };
 
@@ -165,7 +168,7 @@ describe("functions", function() {
             // You're not allowed to define a new function here.
             // If you call getContext() here, you're a cheater! :)
             // ✏️ ADD CODE HERE ✏️
-
+            getContext = getContext.bind(differentContext);
             ////////////////////////////////////////////////////////////////////
 
             const result = getContext.call(context);
@@ -182,11 +185,11 @@ describe("functions", function() {
     });
 
     describe("Stronger than .bind()", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             const context = {};
             let hasBeenCalled = false;
 
-            const getContext = function() {
+            const getContext = function () {
                 hasBeenCalled = true;
                 return this;
             }.bind(context); // <-- we call .bind() on the anonymous function.
@@ -196,7 +199,7 @@ describe("functions", function() {
             // Is there something even stronger than .bind()?
             // Find a way to call getContext(), but with a different context than 'context'.
             // ✏️ EDIT LINE BELOW ✏️
-            const result = getContext();
+            const result = new getContext();
             ////////////////////////////////////////////////////////////////////
 
             if (result === context) {
@@ -211,14 +214,14 @@ describe("functions", function() {
     });
 
     describe("Accessing arguments", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             function returnTheFirstArgument() {
                 ////////////////////////////////////////////////////////////////////
                 // The function is supposed to return the first argument.
                 // Unfortunately, it does not specify any parameters.
                 // Find a way to retrieve the first argument without specifying a parameter.
                 // ✏️ ADD CODE HERE ✏️
-
+                return arguments[0];
                 ////////////////////////////////////////////////////////////////////
             }
 
@@ -234,14 +237,14 @@ describe("functions", function() {
     });
 
     describe("Number of arguments", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             function returnNumberOfArguments() {
                 ////////////////////////////////////////////////////////////////////
                 // The function is supposed to return the number of given arguments.
                 // Find a way to retrieve the number from here.
                 // You should not write any if's here. It should work for all possible numbers.
                 // ✏️ ADD CODE HERE ✏️
-
+                return arguments.length;
                 ////////////////////////////////////////////////////////////////////
             }
 
@@ -264,7 +267,7 @@ describe("functions", function() {
     });
 
     describe("Shadowing", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             const myConst = false;
 
             function myFunction() {
@@ -273,7 +276,7 @@ describe("functions", function() {
                 // This means that we can't change it.
                 // Is there a way to still make 'myConst' equal true here?
                 // ✏️ ADD CODE HERE ✏️
-
+const myConst = true;
                 ////////////////////////////////////////////////////////////////////
 
                 if (myConst !== true) {
@@ -286,7 +289,7 @@ describe("functions", function() {
     });
 
     describe("Some declarations are function scoped", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             function myFunction() {
                 if (myVariable !== undefined) {
                     throw new Error("myVariable should be defined here.");
@@ -296,7 +299,7 @@ describe("functions", function() {
                     // However, in this exercise you're only allowed to add code here.
                     // Is there a way to define a variable in a way that the code above will work?
                     // ✏️ ADD CODE HERE ✏️
-
+var myVariable;
                     ////////////////////////////////////////////////////////////////////
                 }
             }
@@ -306,10 +309,13 @@ describe("functions", function() {
     });
 
     describe("A function that returns a function", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // Can you implement a function 'myFunction' that returns a function?
             // ✏️ ADD CODE HERE ✏️
+function myFunction(){
+return function (){};
+}
 
             ////////////////////////////////////////////////////////////////////
 
@@ -318,14 +324,14 @@ describe("functions", function() {
             if (typeof result !== "function") {
                 throw new Error(
                     "myFunction() did not return a function, instead saw " +
-                        typeof result
+                    typeof result
                 );
             }
         });
     });
 
     describe("A function that returns a reference to itself", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // Can you implement a function 'myFunction' that returns a reference to itself?
             // ✏️ ADD CODE HERE ✏️
@@ -337,20 +343,20 @@ describe("functions", function() {
             if (result !== myFunction) {
                 throw new Error(
                     "myFunction() did not return a reference to itself, instead saw " +
-                        typeof result
+                    typeof result
                 );
             }
         });
     });
 
     describe("Break the loop", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             function breakTheLoop() {
                 ////////////////////////////////////////////////////////////////////
                 // Uh-oh, the function 'breakTheLoop' calls itself recursively (see below).
                 // There are two possible solutions that break the loop. Can you find both?
                 // ✏️ ADD CODE HERE ✏️
-
+function breakTheLoop (){};
                 ////////////////////////////////////////////////////////////////////
 
                 breakTheLoop(); // Recursive call
@@ -361,7 +367,7 @@ describe("functions", function() {
     });
 
     describe("Storing the number of arguments", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // Can you implement a function 'myFunction' that returns a function
             // which returns the number of arguments of 'myFunction' when called?
@@ -394,7 +400,7 @@ describe("functions", function() {
     });
 
     describe("Passing a function as an argument", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             let hasBeenCalled = false;
 
             function passMeAFunction(someFunction) {
@@ -418,7 +424,7 @@ describe("functions", function() {
     });
 
     describe("Accepting a function as an argument", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // Can you implement a function that takes a function as an argument,
             // executes it and returns the result?
@@ -427,13 +433,13 @@ describe("functions", function() {
             ////////////////////////////////////////////////////////////////////
 
             // Now we're calling 'myFunction' and we're passing a function as an argument.
-            const shouldBeA = myFunction(function() {
+            const shouldBeA = myFunction(function () {
                 return "A";
             });
-            const shouldBeB = myFunction(function() {
+            const shouldBeB = myFunction(function () {
                 return "B";
             });
-            const shouldBeC = myFunction(function() {
+            const shouldBeC = myFunction(function () {
                 return "C";
             });
 
@@ -446,7 +452,7 @@ describe("functions", function() {
     });
 
     describe("Implementing forEach()", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // Can you implement a function named 'forEach' that:
             // - takes a function 'fn' as first argument
@@ -482,26 +488,26 @@ describe("functions", function() {
             if (calls[0] !== "element = A, index = 0") {
                 throw new Error(
                     "The given function 'fn' should be called with element = A, index = 0 during the first iteration but has been called with " +
-                        calls[0]
+                    calls[0]
                 );
             }
             if (calls[1] !== "element = B, index = 1") {
                 throw new Error(
                     "The given function 'fn' should be called with element = B, index = 1 during the second iteration but has been called with " +
-                        calls[1]
+                    calls[1]
                 );
             }
             if (calls[2] !== "element = C, index = 2") {
                 throw new Error(
                     "The given function 'fn' should be called with element = C, index = 2 during the third iteration but has been called with " +
-                        calls[2]
+                    calls[2]
                 );
             }
         });
     });
 
     describe("Implementing map()", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             ////////////////////////////////////////////////////////////////////
             // Can you implement a function named 'map' that:
             // - takes a function 'fn' as first argument
@@ -519,7 +525,7 @@ describe("functions", function() {
 
             // When called with an empty array, the result should also be an empty array.
             // The given function 'fn' should also not be called.
-            results = map(function() {
+            results = map(function () {
                 throw new Error(
                     "The given function 'fn' should not be called when the array is empty"
                 );
@@ -535,7 +541,7 @@ describe("functions", function() {
             // The given function 'fn' should have been called three times and each result
             // of 'fn' should be stored in the final array of results.
             results = map(
-                function(element, index) {
+                function (element, index) {
                     return "element = " + element + ", index = " + index;
                 },
                 ["A", "B", "C"]
@@ -543,22 +549,22 @@ describe("functions", function() {
             if (results[0] !== "element = A, index = 0") {
                 throw new Error(
                     "The result of the first iteration should be 'element = A, index = 0' but was '" +
-                        results[0] +
-                        "'"
+                    results[0] +
+                    "'"
                 );
             }
             if (results[1] !== "element = B, index = 1") {
                 throw new Error(
                     "The result of the second iteration should be 'element = B, index = 1' but was '" +
-                        results[1] +
-                        "'"
+                    results[1] +
+                    "'"
                 );
             }
             if (results[2] !== "element = C, index = 2") {
                 throw new Error(
                     "The result of the third iteration should be 'element = C, index = 2' but was '" +
-                        results[2] +
-                        "'"
+                    results[2] +
+                    "'"
                 );
             }
         });
@@ -572,7 +578,7 @@ describe("functions", function() {
      */
 
     describe("Lost context", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             // This is our event emitter. You can register event listeners
             // by calling addEventListener(). As soon as there is an event,
             // it notifies all listeners by calling them.
@@ -610,7 +616,7 @@ describe("functions", function() {
     });
 
     describe("Removing an event listener that has been created with .bind()", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             // This is our example event listener again. This time, it provides a
             // method that allows to remove event listeners again.
             const eventEmitter = {
@@ -650,16 +656,16 @@ describe("functions", function() {
     });
 
     describe("Loosing context again", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             const object = {
-                myMethod: function() {
-                    return function() {
+                myMethod: function () {
+                    return function () {
                         this.doSomething();
                         this.doAnotherThing();
                     };
                 },
-                doSomething: function() {},
-                doAnotherThing: function() {}
+                doSomething: function () { },
+                doAnotherThing: function () { }
             };
 
             // Same as in one of the tests above:
@@ -673,11 +679,11 @@ describe("functions", function() {
     });
 
     describe("Calling array methods on 'arguments'", () => {
-        it("should run without errors", function() {
+        it("should run without errors", function () {
             function calculateSum() {
                 let result = 0;
 
-                arguments.forEach(function(number) {
+                arguments.forEach(function (number) {
                     result = result + number;
                 });
 
